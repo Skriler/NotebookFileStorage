@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         themes = NotebookService.getThemes();
         notes = FileService.readNoteList(tvSelectedFile.getText().toString(), this);
 
-        if (notes == null) {
+        if (notes.isEmpty()) {
             notes = NotebookService.getNoteList();
         }
 

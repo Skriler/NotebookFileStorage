@@ -28,13 +28,12 @@ public class FileService {
     }
 
     public static ArrayList<Note> readNoteList(String fileName, Context context) {
-        ArrayList<Note> notes = null;
+        ArrayList<Note> notes  = new ArrayList<>();
         try(FileInputStream fis = context.openFileInput(fileName)){
             ObjectInputStream objectInputStream = new ObjectInputStream(fis);
             notes = (ArrayList<Note>) objectInputStream.readObject();
         } catch (Exception e){
-            Toast.makeText(context, "Something bad happened", Toast.LENGTH_LONG).show();
-            notes = new ArrayList<>();
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
         }
         return notes;
     }
